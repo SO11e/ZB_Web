@@ -25,7 +25,11 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
+
+    protected $loginPath = '/login';
+    protected $redirectPath = '/';
+    protected $redirectAfterLogout = '/login';
 
     /**
      * Create a new controller instance.
@@ -36,4 +40,11 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+    public function logout(){
+        \Auth::logout();
+
+        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
+    }
 }
+
