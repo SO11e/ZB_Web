@@ -20,7 +20,7 @@
             <header class="main-header">
                 <a href="#" class="logo">
                     <span class="logo-mini"><i class="fa fa-dashboard"></i></span>
-                    <span class="logo-lg"><i class="fa fa-shopping-cart"></i> De Zonnebloem</span>
+                    <span class="logo-lg"><i class="fa fa-sun-o"></i> De Zonnebloem</span>
                 </a>
                 <nav class="navbar navbar-static-top">
                     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -31,24 +31,23 @@
                         <ul class="nav navbar-nav">
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span><i class="fa fa-user"></i> [Naam gebruiker]</span>
-                                    <ul class="dropdown-menu">
-                                        <li class="user-header">
-                                            <img src="{{ asset('/resources/dist/img/user.png') }}" class="img-circle" alt="User Image">
-                                            <p>[Naam gebruiker]
-                                                <small>[Regio gebruiker]</small>
-                                            </p>
-                                        </li>
-                                        <li class="user-footer">
-                                            <div class="pull-left">
-                                                <a href="#" class="btn btn-default btn-flat"><i class="fa fa-user"></i> Mijn account</a>
-                                            </div>
-                                            <div class="pull-right">
-                                                <a href="#" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i> Uitloggen</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </a>
+                                    <span><i class="fa fa-user"></i> [Naam gebruiker]</span></a>
+                                <ul class="dropdown-menu">
+                                    <li class="user-header">
+                                        <img src="{{ asset('/resources/dist/img/user.png') }}" class="img-circle" alt="User Image">
+                                        <p>[Naam gebruiker]
+                                            <small>[Regio gebruiker]</small>
+                                        </p>
+                                    </li>
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="#" class="btn btn-default btn-flat"><i class="fa fa-user"></i> Mijn account</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="#" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i> Uitloggen</a>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
