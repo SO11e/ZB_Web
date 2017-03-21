@@ -16,3 +16,10 @@ Route::get('/', function () {
 });
 
 Route::get('/example', 'ExampleController@showExample')->name('app.example');
+
+Route::get('/meldingen', 'ReportsController@showOverview')->name('app.overview');
+
+/*
+ * The '1' in this route should be the id of the report
+ */
+Route::get('/meldingen/{id}', 'ReportsController@showDetail')->name('app.reportdetail');

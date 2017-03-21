@@ -1548,6 +1548,15 @@ a:focus {
 .box.box-warning {
   border-top-color: #f39c12;
 }
+.detail-img{
+  max-width: 100%;
+  height:auto;
+}
+.box-img{
+  max-width: 100%;
+  height:auto;
+  margin-bottom: 16px;
+}
 .box.box-success {
   border-top-color: #00a65a;
 }
