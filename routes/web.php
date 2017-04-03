@@ -10,11 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/example', 'ExampleController@showExample')->name('app.example');
 Route::get('/', 'DashboardController@index')->name('app.dashboard');
+Route::get('/example', 'ExampleController@showExample')->name('app.example');
+
 Route::get('/users', 'UserController@index')->name('app.users');
 Route::get('/users/getusers', 'UserController@getusers')->name('app.getusers');
+
+Route::get('/meldingen', 'ReportsController@showOverview')->name('app.overview');
+Route::get('/meldingen/{id}', 'ReportsController@showDetail')->name('app.reportdetail');
 
 Route::group(['prefix' => 'region'], function() {
     Route::get('/', 'RegionController@showAllRegions')->name('region.list');
