@@ -64,6 +64,9 @@
                             <a href="/users"><i class="fa fa-user"></i> <span>Gebruikers</span></a>
                         </li>
                         <li>
+                            <a href="{{ route('app.overview') }}"><i class="fa fa-list"></i> <span>Meldingen</span></a>
+                        </li>
+                        <li>
                             <a href="{{ route('region.list') }}"><i class="fa fa-list"></i> <span>Regio's</span></a>
                         </li>
                         
