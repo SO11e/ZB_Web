@@ -75,7 +75,6 @@
 </script>
         </div>-->
 </div>
-</div>
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
