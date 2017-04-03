@@ -16,3 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('/example', 'ExampleController@showExample')->name('app.example');
+
+Route::group(['prefix' => 'region'], function() {
+    Route::get('/', 'RegionController@showAllRegions')->name('region.list');
+    Route::get('/add', 'RegionController@showAddRegion')->name('region.add');
+    Route::get('/edit/{id}', 'RegionController@showEditRegion')->name('region.edit');
+});

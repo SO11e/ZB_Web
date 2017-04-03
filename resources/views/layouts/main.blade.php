@@ -56,9 +56,12 @@
             <aside class="main-sidebar">
                 <section class="sidebar">
                     <ul class="sidebar-menu">
-                        <li class="header">GENERAL</li>
+                        <li class="header">ALGEMEEN</li>
                         <li>
                             <a href="#"><i class="fa fa-home"></i> <span>Home</span></a>
+                        </li>
+                        <li>
+                            <a href="{{ route('region.list') }}"><i class="fa fa-list"></i> <span>Regio's</span></a>
                         </li>
                         
                         <li class="header">ACCOUNT</li>
@@ -77,7 +80,7 @@
                         <small>@yield('pagedescription', '')</small>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> De Zonnebloem</a></li>
+                        <li><a href="#"><i class="fa fa-sun-o"></i> De Zonnebloem</a></li>
                         @yield('middlebreadcrumbs', '')
                         <li class="active">@yield('title', 'Insert Title')</li>
                     </ol>
