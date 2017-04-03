@@ -11,11 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/example', 'ExampleController@showExample')->name('app.example');
+Route::get('/', 'DashboardController@index')->name('app.dashboard');
+Route::get('/users', 'UserController@index')->name('app.users');
+Route::get('/users/getusers', 'UserController@getusers')->name('app.getusers');
 
 Route::group(['prefix' => 'region'], function() {
     Route::get('/', 'RegionController@showAllRegions')->name('region.list');

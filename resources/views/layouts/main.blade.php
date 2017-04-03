@@ -58,7 +58,10 @@
                     <ul class="sidebar-menu">
                         <li class="header">ALGEMEEN</li>
                         <li>
-                            <a href="#"><i class="fa fa-home"></i> <span>Home</span></a>
+                            <a href="/"><i class="fa fa-home"></i> <span>Home</span></a>
+                        </li>
+                        <li>
+                            <a href="/users"><i class="fa fa-user"></i> <span>Gebruikers</span></a>
                         </li>
                         <li>
                             <a href="{{ route('region.list') }}"><i class="fa fa-list"></i> <span>Regio's</span></a>
