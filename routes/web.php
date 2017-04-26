@@ -10,6 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['namespace' => 'Auth'], function() {
+    Route::get('/login', 'LoginController@showLogin')->name('auth.login');
+    Route::post('/login', 'LoginController@doLogin')->name('auth.login.submit');
+});
+
 Route::get('/', 'DashboardController@index')->name('app.dashboard');
 Route::get('/example', 'ExampleController@showExample')->name('app.example');
 

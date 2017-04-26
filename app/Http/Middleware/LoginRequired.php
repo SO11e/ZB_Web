@@ -5,8 +5,7 @@ namespace App\Http\Middleware;
 use App\Http\Controllers\AuthController;
 use Closure;
 
-class RedirectIfAuthenticated
-{
+class LoginRequired {
     /**
      * Handle an incoming request.
      *
@@ -18,9 +17,9 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (AuthController::checkAuth()) {
-            return redirect('/');
+            return $next($request);
         }
-
-        return $next($request);
+        
+        return redirect()->route("auth.login")->withMessage("U dient ingelogd te zijn om deze pagina te bekijken!");
     }
 }

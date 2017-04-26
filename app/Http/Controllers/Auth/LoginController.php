@@ -3,48 +3,24 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
-class LoginController extends Controller
-{
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
-    use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/';
-
-    protected $loginPath = '/login';
-    protected $redirectPath = '/';
-    protected $redirectAfterLogout = '/login';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest', ['except' => 'logout']);
+class LoginController extends Controller {
+    public function showLogin() {
+        return view('auth.login');
     }
-
-    public function logout(){
-        \Auth::logout();
-
-        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
+    
+    public function doLogin(Request $request) {
+        $this->validate($request, [
+            'email' => 'required|string',
+            'password' => 'required|string'
+        ]);
+        
+        $auth = AuthController::doAuth($request->email, $request->password);
+        if($auth) {
+            return redirect()->route('app.dashboard');
+        }
+        
+        return redirect()->back()->withMessage('Incorrecte gebruikersnaam en/of wachtwoord!');
     }
 }
-
