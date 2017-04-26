@@ -18,6 +18,6 @@ class ApiController {
             'timeout' => 5, //API request timeout
         ]);
         
-        return $client->request($method, $route, ["headers" => $headers, "form_params" => $body]);
+        return $client->request($method, $route, ["headers" => $headers, "form_params" => $body, "http_errors" => false]);
     }
 }
