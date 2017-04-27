@@ -7,8 +7,9 @@ use Illuminate\Support\Facades\View;
 
 class BaseController extends Controller {
     function __construct() {
-        $user = AuthController::getUser();
-        
-        View::share('user', $user);
+        //Make User object available in every view
+//        $user = AuthController::getUser();
+//        
+//        View::share('user', $user);
     }
 }

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Controller;
 
-class AuthController {
+class AuthController extends Controller {
     
     /**
      * Provide email and password to authenticate user on valid credentials
@@ -17,12 +18,20 @@ class AuthController {
         $apiresponse = ApiController::doRequest("POST", "/login", [], ["email" => $email, "password" => $password]);
         
         if($apiresponse->getStatusCode() == 200) {
-            session(["auth-token" => $apiresponse->getBody()]);
+            session(["auth_token" => (string)$apiresponse->getBody()]);
             return true;
         }
         return false;
     }
     
+    /**
+     * Removes the JWT token from session
+     * 
+     */
+    public static function doLogout() {
+        session()->forget('auth_token');
+        session()->flush();
+    }
     
     /**
      * Check user authentication based on JWT token stored in session
@@ -30,9 +39,9 @@ class AuthController {
      * @return bool
      */
     public static function checkAuth() {
-        if(session("auth-token", null) == null){ return false; }
-    
-        $apiresponse = ApiController::doRequest("GET", "/isloggedin", ["bearer" => session("auth-token")], []);
+        if(session("auth_token", null) == null){ return false; }
+        
+        $apiresponse = ApiController::doRequest("GET", "/isloggedin", ["bearer" => session("auth_token")], []);
         if($apiresponse->getStatusCode() == 200) { return true; }
         
         return false;
@@ -44,6 +53,6 @@ class AuthController {
      * @return string
      */
     public static function getToken() {
-        return session("auth-token", "");
+        return session("auth_token", "");
     }
 }

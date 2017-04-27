@@ -2,11 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\AuthController;
 use Closure;
 
-class RedirectIfAuthenticated
-{
+class RedirectIfAuthenticated  {
     /**
      * Handle an incoming request.
      *
@@ -15,12 +14,10 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
-    {
+    public function handle($request, Closure $next, $guard = null) {
         if (AuthController::checkAuth()) {
             return redirect('/');
         }
-
         return $next($request);
     }
 }
