@@ -1,8 +1,14 @@
-@extends('layouts.main') @section('title', 'Dashboard') @section('middlebreadcrumbs')
+@extends('layouts.main')
+
+@section('title', 'Dashboard')
+    
+@section('middlebreadcrumbs')
 <!--
         Enter breadcrumbs that will show between application name (De Zonnebloem) and page title (see above) in this format:
     -->
-@endsection @section('content')
+@endsection
+
+@section('content')
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-default">

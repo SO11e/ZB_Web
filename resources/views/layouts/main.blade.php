@@ -44,7 +44,7 @@
                                             <a href="#" class="btn btn-default btn-flat"><i class="fa fa-user"></i> Mijn account</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i> Uitloggen</a>
+                                            <a href="{{ route('auth.logout') }}" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i> Uitloggen</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -75,7 +75,7 @@
                             <a href="#"><i class="fa fa-user"></i> <span>Mijn account</span></a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-sign-out"></i> <span>Uitloggen</span></a>
+                            <a href="{{ route('auth.logout') }}"><i class="fa fa-sign-out"></i> <span>Uitloggen</span></a>
                         </li>
                     </ul>
                 </section>
