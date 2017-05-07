@@ -25,13 +25,16 @@ class UserController extends Controller {
         return view('user.add');
     }
     public function addUser(Request $request) {
-        $this->validata($request, [
-            'firstname' => 'required|string|min:3',
-            'lastname' => 'required|string|min:3',
-            'email' => 'required|email',
-            'role' => '',
-            'region' => '',
-        ]);
+        $data = [
+            'email' => $request->email,
+            'password' => $request->email, //TODO: Change to random password
+            'region' => $request->region,
+            'roles' => $request->roles,
+        ];
+    
+        $apiresponse = ApiController::doRequest('POST', '/users', ["bearer" => AuthController::getToken()], $data);
+        
+        return redirect()->route('app.users');
     }
     
 }
