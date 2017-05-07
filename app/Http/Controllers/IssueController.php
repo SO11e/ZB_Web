@@ -2,19 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Auth\AuthController;
+use App\Models\Issue;
+
 class IssueController extends Controller {
 
     public function showOverview() {
-        if(session("auth_token", null) == null){ return false; }
 
-        $apiResponse = ApiController::doRequest("GET", "/issues", ["bearer" => session("auth_token")], []);
+        $apiResponse = ApiController::doRequest("GET", "/issues?perPage=200", ["bearer" => AuthController::getToken()], []);
+        $data = \GuzzleHttp\json_decode($apiResponse->getBody());
 
-        if($apiResponse->getStatusCode() == 200){echo "WOOHOO";}
+        $issues = [];
 
-        return view('issues_overview');
+        foreach ($data->data as $value){
+            print_r($value);
+            $issues[count($issues)] = new Issue($value);
+        }
+
+        return view('issues_overview', ['issues' => $issues]);
     }
 
     public function showDetail($id){
-        return view('issue_detail');
+
+        $apiResponse = ApiController::doRequest("GET", "/issue/".$id, ["bearer" => AuthController::getToken()], []);
+        $parsedData = \GuzzleHttp\json_decode($apiResponse->getBody());
+
+        $issue = new Issue($parsedData);
+
+        return view('issue_detail', ['issue' => $issue]);
     }
 }

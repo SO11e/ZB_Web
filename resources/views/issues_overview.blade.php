@@ -11,14 +11,16 @@
 
 @section('content')
 <div class="row">
+
     <div class="col-md-12">
     <div class="box">
         <!-- /.box-header -->
         <div class="box-body no-padding">
             <table class="table table-striped">
-                <tbody><tr>
+                <tbody>
+                <tr>
                     <th style="width: 10px">#</th>
-                    <th>Naam</th>
+                    <th>Beschrijving</th>
                     <th>Adres</th>
                     <th>Postcode</th>
                     <th>Stad</th>
@@ -26,26 +28,18 @@
                     <th>Datum opgelost</th>
                     <th>&nbsp;</th>
                 </tr>
+                @foreach($issues as $issue)
                 <tr>
-                    <td>1.</td>
-                    <td>Melding Zorgvlietstraat</td>
-                    <td>Zorgvlietstraat 491</td>
-                    <td>4834 NH Breda</td>
-                    <td>Breda</td>
-                    <td>20-02-2017</td>
-                    <td>-</td>
-                    <td><a href="/meldingen/1" type="button" class="btn btn-block btn-warning btn-sm">Bekijk meer &nbsp;<i class="fa fa-arrow-right"></i></a></td>
+                    <td>{{ $issue->id }}</td>
+                    <td>{{ $issue->description }}</td>
+                    <td>{{ $issue->streetName }} &nbsp; {{ $issue->houseNumber }}</td>
+                    <td>{{ $issue->postalCode }}</td>
+                    <td>{{ $issue->place }}</td>
+                    <td>{{ $issue->dateCreated }}</td>
+                    <td>{{ $issue->dateResolved }}</td>
+                    <td><a href="/meldingen/{{$issue->id}}" type="button" class="btn btn-block btn-warning btn-sm">Bekijk meer &nbsp;<i class="fa fa-arrow-right"></i></a></td>
                 </tr>
-                <tr>
-                    <td>2.</td>
-                    <td>Melding Chasseveld</td>
-                    <td>Chasseveld</td>
-                    <td>4811 DH Breda</td>
-                    <td>Breda</td>
-                    <td>29-09-2016</td>
-                    <td>04-01-2017</td>
-                    <td><a href="http://google.com" type="button" class="btn btn-block btn-warning btn-sm">Bekijk meer &nbsp;<i class="fa fa-arrow-right"></i></a></td>
-                </tr>
+                @endforeach
                 </tbody></table>
         </div>
         <!-- /.box-body -->

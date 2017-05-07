@@ -13,31 +13,29 @@
     <div class="row">
         <div class="col-md-4">
             <p><strong>Adres:</strong></p>
-            <p>Zorgvlietstraat 491</p>
+            <p>{{ $issue->streetName }}</p>
 
             <p><strong>Postcode:</strong></p>
-            <p>4834 NH Breda</p>
+            <p>{{ $issue->postalCode }}</p>
 
             <p><strong>Stad/regio:</strong></p>
-            <p>Breda</p>
+            <p>{{ $issue->place }}</p>
 
             <p><strong>Aangemaakt op:</strong></p>
-            <p>20-02-2017</p>
+            <p>{{ $issue->dateCreated }}</p>
 
-            <p><strong>Status:</strong></p>
-            <p>Nog niet bekeken door de administrator</p>
-
-            <p><strong>Aangemaakt door:</strong></p>
-            <p>Jan van Dam</p>
+            <p><strong>Opgelost op:</strong></p>
+            <p>{{ $issue->dateCreated }}</p>
 
             <img class="detail-img" src="{{ asset('/resources/dist/img/reports/example_map.png') }}"/>
+            <p><strong>Coördinaten</strong></p>
+            <p>Breedtegraad: {{$issue->latitude}} <br/>
+               Lengtegraad: {{$issue->longitude}}</p>
+
             <div style="width:50%">
-                <button href="http://google.com" type="button" class="btn btn-block btn-success">Goedkeuren</button>
-                <button href="http://google.com" type="button" class="btn btn-block btn-danger">Afkeuren</button>
+                <button href="#" type="button" class="btn btn-block btn-success">Goedkeuren</button>
+                <button href="#" type="button" class="btn btn-block btn-danger">Afkeuren</button>
             </div>
-        </div>
-        <div class="col-md-8">
-            <img class="detail-img" src="{{ asset('/resources/dist/img/reports/zorgvlietstraat.png') }}"/>
         </div>
     </div>
 @endsection
