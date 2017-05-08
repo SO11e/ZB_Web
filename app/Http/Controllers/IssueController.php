@@ -23,7 +23,7 @@ class IssueController extends Controller {
 
     public function showDetail($id){
 
-        $apiResponse = ApiController::doRequest("GET", "/issue/".$id, ["bearer" => AuthController::getToken()], []);
+        $apiResponse = ApiController::doRequest("GET", "/issues/".$id, ["bearer" => AuthController::getToken()], []);
         $parsedData = \GuzzleHttp\json_decode($apiResponse->getBody());
 
         $issue = new Issue($parsedData);

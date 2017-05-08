@@ -12,6 +12,9 @@
 @section('content')
     <div class="row">
         <div class="col-md-4">
+            <p><strong>Beschrijving:</strong></p>
+            <p>{{ $issue->description }}</p>
+
             <p><strong>Adres:</strong></p>
             <p>{{ $issue->streetName }}</p>
 
