@@ -19,7 +19,6 @@
             <table class="table table-striped">
                 <tbody>
                 <tr>
-                    <th style="width: 10px">#</th>
                     <th>Beschrijving</th>
                     <th>Adres</th>
                     <th>Postcode</th>
@@ -30,13 +29,13 @@
                 </tr>
                 @foreach($issues as $issue)
                 <tr>
-                    <td>{{ $issue->id }}</td>
                     <td>{{ $issue->description }}</td>
                     <td>{{ $issue->streetName }} &nbsp; {{ $issue->houseNumber }}</td>
                     <td>{{ $issue->postalCode }}</td>
                     <td>{{ $issue->place }}</td>
-                    <td>{{ $issue->dateCreated }}</td>
-                    <td>{{ $issue->dateResolved }}</td>
+                    <td>{{ date("d-m-Y H:i:s", strtotime($issue->dateCreated)) }}</td>
+                    <td>
+                        {{ $issue->dateResolved == "Nog niet opgelost" ? $issue->dateResolved : date("d-m-Y H:i:s", strtotime($issue->dateResolved)) }}</td>
                     <td><a href="/meldingen/{{$issue->id}}" type="button" class="btn btn-block btn-warning btn-sm">Bekijk meer &nbsp;<i class="fa fa-arrow-right"></i></a></td>
                 </tr>
                 @endforeach

@@ -15,11 +15,10 @@ class IssueController extends Controller {
         $issues = [];
 
         foreach ($data->data as $value){
-            print_r($value);
             $issues[count($issues)] = new Issue($value);
         }
 
-        return view('issues_overview', ['issues' => $issues]);
+        return view('issue.list', ['issues' => $issues]);
     }
 
     public function showDetail($id){
@@ -29,6 +28,6 @@ class IssueController extends Controller {
 
         $issue = new Issue($parsedData);
 
-        return view('issue_detail', ['issue' => $issue]);
+        return view('issue.view', ['issue' => $issue]);
     }
 }
