@@ -74,15 +74,15 @@
                         <table class="table">
                             <tr>
                                 <td>Nieuwe meldingen:</td>
-                                <td>3</td>
+                                <td>[Not implemented]</td>
                             </tr>
                             <tr>
                                 <td>Nieuwe geaccepteerde rapportages:</td>
-                                <td>5</td>
+                                <td>[Not implemented]</td>
                             </tr>
                             <tr>
                                 <td>Nieuwe geweigerde rapportages:</td>
-                                <td>2</td>
+                                <td>[Not implemented]</td>
                             </tr>
                         </table>
                     </div>

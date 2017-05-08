@@ -29,7 +29,7 @@ class UserController extends Controller {
             'email' => $request->email,
             'password' => $request->email, //TODO: Change to random password
             'region' => $request->region,
-            'roles' => $request->roles,
+            'roles' => $request->role,
         ];
     
         $apiresponse = ApiController::doRequest('POST', '/users', ["bearer" => AuthController::getToken()], $data);
