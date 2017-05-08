@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Auth\AuthController;
 
-class DashboardController extends Controller
-{
-    //
+class DashboardController extends Controller {
+    
     public function index() {
+        $apiresponse = ApiController::doRequest('GET', '/users/me', ["bearer" => AuthController::getToken()], []);
+        $userdata = \GuzzleHttp\json_decode($apiresponse->getBody());
         
-        return view('dashboard');
+        return view('dashboard', ['user' => $userdata]);
     }
 }
