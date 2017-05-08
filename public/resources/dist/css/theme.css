@@ -1551,6 +1551,7 @@ a:focus {
 .detail-img{
   max-width: 100%;
   height:auto;
+  margin-bottom: 32px;
 }
 .box-img{
   max-width: 100%;
