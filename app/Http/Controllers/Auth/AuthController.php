@@ -18,7 +18,9 @@ class AuthController extends Controller {
         $apiresponse = ApiController::doRequest("POST", "/login", [], ["email" => $email, "password" => $password]);
         
         if($apiresponse->getStatusCode() == 200) {
-            session(["auth_token" => (string)$apiresponse->getBody()]);
+            $apibodystr = (string)$apiresponse->getBody();
+            $apibody = \GuzzleHttp\json_decode($apibodystr);
+            session(["auth_token" => $apibody->token]);
             return true;
         }
         return false;
