@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Auth\AuthController;
 use App\Models\Issue;
 
-class IssueController extends Controller {
+class IssueController extends BaseController {
 
     public function showOverview() {
 

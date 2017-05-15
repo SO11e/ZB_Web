@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class RegionController extends Controller {
+class RegionController extends BaseController {
     
     private $regions = [
         1000 => [

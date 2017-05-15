@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller {
+class UserController extends BaseController {
     
     public function showUsers() {
         $apiresponse = ApiController::doRequest('GET', '/users?perPage=200', ["bearer" => AuthController::getToken()], []);
