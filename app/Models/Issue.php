@@ -8,6 +8,8 @@ class Issue {
     public $houseNumber;
     public $postalCode;
     public $place;
+    public $region;
+    public $status;
     public $description;
     public $dateCreated;
     public $dateResolved;
@@ -21,6 +23,8 @@ class Issue {
         $this->houseNumber = isset($data->houseNumber) ? $data->houseNumber : '';
         $this->postalCode = isset($data->postalCode) ? $data->postalCode : 'Niet opgegeven';
         $this->place = isset($data->place) ? $data->place : 'Niet opgegeven';
+        $this->region = isset($data->region) ? $data->region : 'Geen regio opgegeven';
+        $this->status = isset($data->status) ? $data->status : 'Onbekend';
         $this->description = isset($data->description) ? $data->description : 'Niet opgegeven';
         $this->dateCreated = isset($data->dateCreated) ? $data->dateCreated : 'Niet opgegeven';
         $this->dateResolved = isset($data->dateResolved) ? $data->dateResolved : 'Nog niet opgelost';
