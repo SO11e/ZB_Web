@@ -25,7 +25,6 @@
                             <td width="50px">#</td>
                             <td width="150px">Naam</td>
                             <td width="150px">Beheerder</td>
-                            <td width="50px">Leden</td>
                             <td width="100px">Status</td>
                             <td>Postcodes</td>
                             <td width="75px">Acties</td>
@@ -34,14 +33,13 @@
                         <tbody>
                         @foreach($regions as $region)
                             <tr>
-                                <td>{{ $region['id'] }}</td>
-                                <td>{{ $region['name'] }}</td>
-                                <td>{{ $region['manager'] }}</td>
-                                <td>{{ $region['members'] }}</td>
-                                <td>{{ $region['active'] ? 'Actief' : 'Non-actief' }}</td>
+                                <td>{{ $region->id }}</td>
+                                <td>{{ $region->name }}</td>
+                                <td>{{ $region->adminuser }}</td>
+                                <td>{{ $region->isActive ? 'Actief' : 'Non-actief' }}</td>
                                 <td>
                                     <?php $first = true; ?>
-                                    @foreach($region['zipcodes'] as $zipcode)
+                                    @foreach($region->postalCodes as $zipcode)
                                         @if($first)
                                             {{ $zipcode }}
                                             <?php $first = false; ?>
@@ -52,7 +50,7 @@
                                 </td>
                                 <td>
                                     <div class="btn-group-xs">
-                                        <a href="{{ route('region.edit', $region['id']) }}" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i> Bewerken</a>
+                                        <a href="{{ route('region.edit', $region->id) }}" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i> Bewerken</a>
                                     </div>
                                 </td>
                             </tr>

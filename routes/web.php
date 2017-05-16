@@ -28,8 +28,9 @@ Route::group(['middleware' => 'loginrequired'], function() {
     Route::get('/meldingen/{id}', 'IssueController@showDetail')->name('app.reportdetail');
     
     Route::group(['prefix' => 'region'], function() {
-        Route::get('/', 'RegionController@showAllRegions')->name('region.list');
+        Route::get('/', 'RegionController@showRegions')->name('region.list');
         Route::get('/add', 'RegionController@showAddRegion')->name('region.add');
+        Route::post('/add', 'RegionController@addRegion')->name('region.add.submit');
         Route::get('/edit/{id}', 'RegionController@showEditRegion')->name('region.edit');
     });
     
