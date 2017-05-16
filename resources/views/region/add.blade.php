@@ -16,31 +16,26 @@
                     </h3>
                 </div>
                 <div class="box-body">
-                    <div class="form-group">
-                        <label>Naam:</label>
-                        <input class="form-control" type="text" placeholder="Naam regio">
-                    </div>
-                    <div class="form-group">
-                        <label>Beheerder:</label>
-                        <select class="form-control" name="manager">
-                            <option selected disabled>Kies een beheerder</option>
-                            <option value="0">Pieter Derkse</option>
-                            <option value="0">Petra Dijkstra</option>
-                            <option value="0">Johan de Jong</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input type="checkbox" name="active" checked/>
-                        <label>Actief</label>
-                    </div>
-                    <div class="form-group">
-                        <label>Postcodes (kommagescheiden):</label>
-                        <textarea class="form-control" name="zipcodes" placeholder="1234AA,1234AB,1234AC"></textarea>
-                    </div>
-                    <div class="form-group text-right">
-                        <a href="{{ route('region.list') }}" class="btn btn-sm btn-success"><i class="fa fa-save"></i> Opslaan</a>
-                        <a href="{{ route('region.list') }}" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Annuleren</a>
-                    </div>
+                    <form id="newregionform" method="POST" action="{{ route('region.add.submit') }}">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label>Naam:</label>
+                            <input class="form-control" type="text" name="name" placeholder="Naam regio">
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="isActive" checked/>
+                            <label>Actief</label>
+                        </div>
+                        <div class="form-group">
+                            <label>Postcodes (kommagescheiden):</label>
+                            <textarea class="form-control" name="postalCodes" placeholder="1234AA,1234AB,1234AC"></textarea>
+                        </div>
+                        <div class="form-group text-right">
+                            <button class="btn btn-success" onclick="document.getElementById('newregionform').submit()"><i class="fa fa-check"></i> Opslaan</button>
+                            <a href="{{ route('region.list') }}" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Annuleren</a>
+                        </div>
+                    </form>
+                    
                 </div>
             </div>
         </div>
