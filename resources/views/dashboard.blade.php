@@ -19,29 +19,29 @@
                 <table class="table">
                     <tr>
                         <td>Voornaam:</td>
-                        <td>[Not implemented]</td>
+                        <td>{{ $user->firstname != '' ? $user->firstname : 'Onbekend' }}</td>
                     </tr>
                     <tr>
                         <td>Achternaam:</td>
-                        <td>[Not implemented]</td>
+                        <td>{{ $user->lastname != '' ? $user->lastname : 'Onbekend' }}</td>
                     </tr>
                     <tr>
-                        <td>Woonplaats:</td>
-                        <td>[Not implemented]</td>
-                    </tr>
-                    <tr>
-                        <td>Straatnaam:</td>
-                        <td>[Not implemented]</td>
+                        <td>Adres:</td>
+                        <td>{{ $user->street != '' && $user->housenumber != '' ? $user->street . ' ' . $user->housenumber : 'Onbekend' }}</td>
                     </tr>
                     <tr>
                         <td>Postcode:</td>
-                        <td>[Not implemented]</td>
+                        <td>{{ $user->zipcode != '' ? $user->zipcode : 'Onbekend' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Woonplaats:</td>
+                        <td>{{ $user->city != '' ? $user->city : 'Onbekend' }}</td>
                     </tr>
                     <tr>
                         <td>Rol:</td>
                         <td>
                             <?php 
-                                switch($user->roles) {
+                                switch($user->role) {
                                     case 'user':
                                         echo 'Gebruiker';
                                         break;
@@ -56,7 +56,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Email Adres:</td>
+                        <td>Emailadres:</td>
                         <td>{{ $user->email }}</td>
                     </tr>
                 </table>

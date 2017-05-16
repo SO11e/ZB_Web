@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class AuthController extends Controller {
     
@@ -21,6 +22,7 @@ class AuthController extends Controller {
             $apibodystr = (string)$apiresponse->getBody();
             $apibody = \GuzzleHttp\json_decode($apibodystr);
             session(["auth_token" => $apibody->token]);
+            session(["auth_user" => new User($apibody->user)]);
             return true;
         }
         return false;
@@ -43,8 +45,13 @@ class AuthController extends Controller {
     public static function checkAuth() {
         if(session("auth_token", null) == null){ return false; }
         
-        $apiresponse = ApiController::doRequest("GET", "/isloggedin", ["bearer" => session("auth_token")], []);
-        if($apiresponse->getStatusCode() == 200) { return true; }
+        $apiresponse = ApiController::doRequest("GET", "/users/me", ["bearer" => session("auth_token")], []);
+        if($apiresponse->getStatusCode() == 200) {
+            $apibodystr = (string)$apiresponse->getBody();
+            $apibody = \GuzzleHttp\json_decode($apibodystr);
+            session(["auth_user" => new User($apibody)]);
+            return true; 
+        }
         
         return false;
     }
@@ -56,5 +63,14 @@ class AuthController extends Controller {
      */
     public static function getToken() {
         return session("auth_token", "");
+    }
+    
+    /**
+     * Returns user model when signed in. Returns null when user is not signed in.
+     *
+     * @return User
+     */
+    public static function getUser() {
+        return session("auth_user", null);
     }
 }

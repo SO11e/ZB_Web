@@ -31,12 +31,12 @@
                         <ul class="nav navbar-nav">
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span><i class="fa fa-user"></i> [Naam gebruiker]</span></a>
+                                    <span><i class="fa fa-user"></i> {{ $user->firstname != '' && $user->lastname != '' ? $user->firstname . ' ' . $user->lastname : 'Onbekende gebruiker' }}</span></a>
                                 <ul class="dropdown-menu">
                                     <li class="user-header">
                                         <img src="{{ asset('/resources/dist/img/user.png') }}" class="img-circle" alt="User Image">
-                                        <p>[Naam gebruiker]
-                                            <small>[Regio gebruiker]</small>
+                                        <p>{{ $user->firstname != '' && $user->lastname != '' ? $user->firstname . ' ' . $user->lastname : 'Onbekende gebruiker' }}
+                                            <small>{{ $user->region != '' ? $user->region : 'Onbekende regio' }}</small>
                                         </p>
                                     </li>
                                     <li class="user-footer">

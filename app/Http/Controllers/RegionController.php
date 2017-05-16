@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Models\Region;
 use Illuminate\Http\Request;
 
-class RegionController extends Controller {
+class RegionController extends BaseController {
     
     public function showRegions() {
         $apiresponse = ApiController::doRequest('GET', '/regions?perPage=200', ["bearer" => AuthController::getToken()], []);
