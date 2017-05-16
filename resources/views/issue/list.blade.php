@@ -23,8 +23,10 @@
                     <th>Adres</th>
                     <th>Postcode</th>
                     <th>Stad</th>
+                    <th>Regio</th>
                     <th>Datum toegevoegd</th>
                     <th>Datum opgelost</th>
+                    <th>Status</th>
                     <th>&nbsp;</th>
                 </tr>
                 @foreach($issues as $issue)
@@ -33,9 +35,11 @@
                     <td>{{ $issue->streetName }} &nbsp; {{ $issue->houseNumber }}</td>
                     <td>{{ $issue->postalCode }}</td>
                     <td>{{ $issue->place }}</td>
+                    <td>{{ $issue->region }}</td>
                     <td>{{ date("d-m-Y H:i:s", strtotime($issue->dateCreated)) }}</td>
                     <td>
                         {{ $issue->dateResolved == "Nog niet opgelost" ? $issue->dateResolved : date("d-m-Y H:i:s", strtotime($issue->dateResolved)) }}</td>
+                    <td>{{ $issue->status }}</td>
                     <td><a href="/meldingen/{{$issue->id}}" type="button" class="btn btn-block btn-warning btn-sm">Bekijk meer &nbsp;<i class="fa fa-arrow-right"></i></a></td>
                 </tr>
                 @endforeach
