@@ -18,14 +18,16 @@ Route::group(['namespace' => 'Auth', 'middleware' => 'redirectifauthenticated'],
 Route::group(['middleware' => 'loginrequired'], function() {
     Route::get('/', 'DashboardController@index')->name('app.dashboard');
     
-    Route::get('/users', 'UserController@showUsers')->name('app.users');
+    Route::get('/users', 'UserController@showUsers')->name('user.list');
     Route::group(['prefix' => 'user'], function() {
-        Route::get('/add', 'UserController@showAddUser')->name('app.user.add');
-        Route::post('/add', 'UserController@addUser')->name('app.user.add.submit');
+        Route::get('/add', 'UserController@showAddUser')->name('user.add');
+        Route::post('/add', 'UserController@addUser')->name('user.add.submit');
     });
     
-    Route::get('/meldingen', 'IssueController@showOverview')->name('app.overview');
-    Route::get('/meldingen/{id}', 'IssueController@showDetail')->name('app.reportdetail');
+    Route::get('/issues', 'IssueController@showOverview')->name('issue.list');
+    Route::group(['prefix' => 'issue'], function() {
+        Route::get('/{id}', 'IssueController@showDetail')->name('issue.view');
+    });
     
     Route::group(['prefix' => 'region'], function() {
         Route::get('/', 'RegionController@showRegions')->name('region.list');
