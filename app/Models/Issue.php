@@ -18,18 +18,18 @@ class Issue {
 
     public function __construct($data){
 
-        $this->id = isset($data->_id) ? $data->_id : '';
-        $this->streetName = isset($data->streetName) ? $data->streetName : 'Niet opgegeven';
-        $this->houseNumber = isset($data->houseNumber) ? $data->houseNumber : '';
-        $this->postalCode = isset($data->postalCode) ? $data->postalCode : 'Niet opgegeven';
-        $this->place = isset($data->place) ? $data->place : 'Niet opgegeven';
-        $this->region = isset($data->region) ? $data->region : 'Geen regio opgegeven';
-        $this->status = isset($data->status) ? $data->status : 'Onbekend';
-        $this->description = isset($data->description) ? $data->description : 'Niet opgegeven';
-        $this->dateCreated = isset($data->dateCreated) ? $data->dateCreated : 'Niet opgegeven';
-        $this->dateResolved = isset($data->dateResolved) ? $data->dateResolved : 'Nog niet opgelost';
-        $this->latitude = isset($data->latitude) ? $data->latitude : '';
-        $this->longitude = isset($data->longitude) ? $data->longitude : '';
+        $this->id = isset($data->_id) ? $data->_id : null;
+        $this->streetName = isset($data->streetName) ? $data->streetName : null;
+        $this->houseNumber = isset($data->houseNumber) ? $data->houseNumber : null;
+        $this->postalCode = isset($data->postalCode) ? $data->postalCode : null;
+        $this->place = isset($data->place) ? $data->place : null;
+        $this->region = isset($data->region) ? new Region($data->region) : null;
+        $this->status = isset($data->status) ? $data->status : null;
+        $this->description = isset($data->description) ? $data->description : null;
+        $this->dateCreated = isset($data->dateCreated) ? $data->dateCreated : null;
+        $this->dateResolved = isset($data->dateResolved) ? $data->dateResolved : null;
+        $this->latitude = isset($data->latitude) ? $data->latitude : null;
+        $this->longitude = isset($data->longitude) ? $data->longitude : null;
     }
 
 }
