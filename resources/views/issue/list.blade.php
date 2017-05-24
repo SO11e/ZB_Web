@@ -3,10 +3,6 @@
 @section('title', 'Overzicht meldingen')
 
 @section('middlebreadcrumbs')
-<!--
-    Enter breadcrumbs that will show between application name (De Zonnebloem) and page title (see above) in this format:
--->
-<li>MiddleBreadcrumb</li>
 @endsection
 
 @section('content')
@@ -31,16 +27,16 @@
                 </tr>
                 @foreach($issues as $issue)
                 <tr>
-                    <td>{{ $issue->description }}</td>
-                    <td>{{ $issue->streetName }} &nbsp; {{ $issue->houseNumber }}</td>
-                    <td>{{ $issue->postalCode }}</td>
-                    <td>{{ $issue->place }}</td>
-                    <td>{{ $issue->region }}</td>
-                    <td>{{ date("d-m-Y H:i:s", strtotime($issue->dateCreated)) }}</td>
+                    <td>{{ $issue->description != null ? $issue->description : 'Onbekend' }}</td>
+                    <td>{{ $issue->streetName != null && $issue->houseNumber != null ? $issue->streetName . ' ' . $issue->houseNumber : 'Onbekend' }}</td>
+                    <td>{{ $issue->postalCode != null ? $issue->postalCode : 'Onbekend' }}</td>
+                    <td>{{ $issue->place != null ? $issue->place : 'Onbekend' }}</td>
+                    <td>{{ $issue->region != null && $issue->region->name != null ? $issue->region->name : 'Onbekend' }}</td>
+                    <td>{{ $issue->dateCreated != null ? date("d-m-Y H:i:s", strtotime($issue->dateCreated)) : 'Onbekend' }}</td>
                     <td>
-                        {{ $issue->dateResolved == "Nog niet opgelost" ? $issue->dateResolved : date("d-m-Y H:i:s", strtotime($issue->dateResolved)) }}</td>
-                    <td>{{ $issue->status }}</td>
-                    <td><a href="/meldingen/{{$issue->id}}" type="button" class="btn btn-block btn-warning btn-sm">Bekijk meer &nbsp;<i class="fa fa-arrow-right"></i></a></td>
+                        {{ $issue->dateResolved != null ? date("d-m-Y H:i:s", strtotime($issue->dateResolved)) : 'Onbekend' }}</td>
+                    <td>{{ $issue->status != null ? $issue->status : 'Onbekend' }}</td>
+                    <td><a href="{{ route('issue.view', $issue->id) }}" type="button" class="btn btn-block btn-warning btn-sm">Bekijk meer &nbsp;<i class="fa fa-arrow-right"></i></a></td>
                 </tr>
                 @endforeach
                 </tbody></table>

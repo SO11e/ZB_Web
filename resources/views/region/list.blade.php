@@ -35,7 +35,7 @@
                             <tr>
                                 <td>{{ $region->id }}</td>
                                 <td>{{ $region->name }}</td>
-                                <td>{{ $region->adminuser }}</td>
+                                <td>{{ $region->manager->fullname }}</td>
                                 <td>{{ $region->isActive ? 'Actief' : 'Non-actief' }}</td>
                                 <td>
                                     <?php $first = true; ?>

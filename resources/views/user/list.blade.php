@@ -9,7 +9,7 @@
             <div class="box-header">
                 <h3 class="box-title">Gebruikers</h3>
                 <div class="box-tools">
-                    <a href="{{ route('app.user.add') }}" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i> Nieuwe gebruiker</a>
+                    <a href="{{ route('user.add') }}" class="btn btn-warning btn-xs"><i class="fa fa-plus"></i> Nieuwe gebruiker</a>
                 </div>
             </div>
             <div class="box-body no-padding table-horizontalscroll">
@@ -26,10 +26,10 @@
                     <tbody>
                     @foreach($users as $user)
                         <tr>
-                            <td>To be implemented</td>
+                            <td>{{ $user->fullname != ' ' ? $user->fullname : 'Onbekend' }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->role }}</td>
-                            <td>{{ $user->region }}</td>
+                            <td>{{ $user->region->name }}</td>
                             <td>
                                 <div class="btn-group btn-group-xs" width="100%">
                                     <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Bewerken</a>
