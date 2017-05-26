@@ -49,6 +49,12 @@ class IssueController extends BaseController {
         return redirect()->route('issue.list');
     }
 
+    public function deleteIssue($id){
+        $apiResonse = ApiController::doRequest('DELETE', '/issues/'.$id, ["bearer" => AuthController::getToken()], []);
+
+        return redirect()->route('issue.list');
+    }
+
     private function getOneIssue($id){
         $apiResponse = ApiController::doRequest("GET", "/issues/".$id, ["bearer" => AuthController::getToken()], []);
         $parsedData = \GuzzleHttp\json_decode($apiResponse->getBody());

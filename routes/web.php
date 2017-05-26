@@ -29,6 +29,7 @@ Route::group(['middleware' => 'loginrequired'], function() {
         Route::get('/{id}', 'IssueController@showDetail')->name('issue.view');
         Route::get('/edit/{id}', 'IssueController@showEditIssue')->name('issue.edit');
         Route::post('/edit', 'IssueController@editIssue')->name('issue.edit.submit');
+        Route::get('/delete/{id}', 'IssueController@deleteIssue')->name('issue.delete');
     });
     
     Route::group(['prefix' => 'region'], function() {
