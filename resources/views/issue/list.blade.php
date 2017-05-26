@@ -24,6 +24,7 @@
                     <th>Datum opgelost</th>
                     <th>Status</th>
                     <th>&nbsp;</th>
+                    <th>&nbsp;</th>
                 </tr>
                 @foreach($issues as $issue)
                 <tr>
@@ -37,6 +38,7 @@
                         {{ $issue->dateResolved != null ? date("d-m-Y H:i:s", strtotime($issue->dateResolved)) : 'Onbekend' }}</td>
                     <td>{{ $issue->status != null ? $issue->status : 'Onbekend' }}</td>
                     <td><a href="{{ route('issue.view', $issue->id) }}" type="button" class="btn btn-block btn-warning btn-sm">Bekijk meer &nbsp;<i class="fa fa-arrow-right"></i></a></td>
+                    <td><a href="{{ route('issue.edit', $issue->id) }}" type="button" class="btn btn-block btn-warning btn-sm">Bewerken &nbsp; <i class="fa fa-pencil"></i></a></td>
                 </tr>
                 @endforeach
                 </tbody></table>
