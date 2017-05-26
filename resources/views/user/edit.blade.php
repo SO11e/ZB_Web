@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Nieuwe gebruiker')
+@section('title', 'Gebruiker bewerken')
 
 @section('middlebreadcrumbs')
     <li>Gebruiker</li>
@@ -27,11 +27,11 @@
             <div class="box box-warning">
                 <div class="box-header">
                     <h3 class="box-title">
-                        Nieuwe gebruiker
+                        Gebruiker bewerken
                     </h3>
                 </div>
                 <div class="box-body">
-                    <form id="newuserform" method="POST" action="{{ route('user.add.submit') }}">
+                    <form id="newuserform" method="POST" action="{{ route('user.edit.submit') }}">
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-6">

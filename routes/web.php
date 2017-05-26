@@ -22,6 +22,8 @@ Route::group(['middleware' => 'loginrequired'], function() {
     Route::group(['prefix' => 'user'], function() {
         Route::get('/add', 'UserController@showAddUser')->name('user.add');
         Route::post('/add', 'UserController@addUser')->name('user.add.submit');
+        Route::get('/edit/{id}', 'UserController@showEditUser')->name('user.edit');
+        Route::post('/edit/{id}', 'UserController@editUser')->name('user.edit.submit');
     });
     
     Route::get('/issues', 'IssueController@showOverview')->name('issue.list');

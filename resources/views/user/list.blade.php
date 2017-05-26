@@ -17,6 +17,7 @@
                     <thead>
                     <tr class="text-bold">
                         <td width="125px">Volledige naam</td>
+                        <td width="100px">Woonplaats</td>
                         <td width="200px">Emailadres</td>
                         <td width="75px">Rol</td>
                         <td width="100px">Regio</td>
@@ -27,12 +28,13 @@
                     @foreach($users as $user)
                         <tr>
                             <td>{{ $user->fullname != ' ' ? $user->fullname : 'Onbekend' }}</td>
+                            <td>{{ $user->city != null ? $user->city : 'Onbekend' }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->role }}</td>
                             <td>{{ $user->region->name }}</td>
                             <td>
                                 <div class="btn-group btn-group-xs" width="100%">
-                                    <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Bewerken</a>
+                                    <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Bewerken</a>
                                     <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-trash"></i> Verwijderen</a>
                                 </div>
                             </td>
