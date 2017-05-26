@@ -57,16 +57,16 @@
                 <section class="sidebar">
                     <ul class="sidebar-menu">
                         <li class="header">ALGEMEEN</li>
-                        <li>
+                        <li class="{{ Ekko::isActiveRoute('app.dashboard') }}">
                             <a href="{{ route('app.dashboard') }}"><i class="fa fa-home"></i> <span>Home</span></a>
                         </li>
-                        <li>
+                        <li class="{{ Ekko::areActiveRoutes(['user.list', 'user.add', 'user.edit', 'user.remove']) }}">
                             <a href="{{ route('user.list') }}"><i class="fa fa-user"></i> <span>Gebruikers</span></a>
                         </li>
-                        <li>
+                        <li class="{{ Ekko::areActiveRoutes(['issue.list', 'issue.view']) }}">
                             <a href="{{ route('issue.list') }}"><i class="fa fa-list"></i> <span>Meldingen</span></a>
                         </li>
-                        <li>
+                        <li class="{{ Ekko::areActiveRoutes(['region.list', 'region.add', 'region.edit']) }}">
                             <a href="{{ route('region.list') }}"><i class="fa fa-list"></i> <span>Regio's</span></a>
                         </li>
                         
