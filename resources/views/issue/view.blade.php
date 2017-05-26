@@ -6,7 +6,7 @@
 <!--
     Enter breadcrumbs that will show between application name (De Zonnebloem) and page title (see above) in this format:
 -->
-<li>MiddleBreadcrumb</li>
+<li>Melding</li>
 @endsection
 
 @section('content')

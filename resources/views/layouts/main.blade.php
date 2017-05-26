@@ -36,7 +36,7 @@
                                     <li class="user-header">
                                         <img src="{{ asset('/resources/dist/img/user.png') }}" class="img-circle" alt="User Image">
                                         <p>{{ $user->firstname != '' && $user->lastname != '' ? $user->firstname . ' ' . $user->lastname : 'Onbekende gebruiker' }}
-                                            <small>{{ $user->region != '' ? $user->region : 'Onbekende regio' }}</small>
+                                            <small>{{ $user->region->name != '' ? $user->region->name : 'Onbekende regio' }}</small>
                                         </p>
                                     </li>
                                     <li class="user-footer">
@@ -58,13 +58,13 @@
                     <ul class="sidebar-menu">
                         <li class="header">ALGEMEEN</li>
                         <li>
-                            <a href="/"><i class="fa fa-home"></i> <span>Home</span></a>
+                            <a href="{{ route('app.dashboard') }}"><i class="fa fa-home"></i> <span>Home</span></a>
                         </li>
                         <li>
-                            <a href="/users"><i class="fa fa-user"></i> <span>Gebruikers</span></a>
+                            <a href="{{ route('user.list') }}"><i class="fa fa-user"></i> <span>Gebruikers</span></a>
                         </li>
                         <li>
-                            <a href="{{ route('app.overview') }}"><i class="fa fa-list"></i> <span>Meldingen</span></a>
+                            <a href="{{ route('issue.list') }}"><i class="fa fa-list"></i> <span>Meldingen</span></a>
                         </li>
                         <li>
                             <a href="{{ route('region.list') }}"><i class="fa fa-list"></i> <span>Regio's</span></a>

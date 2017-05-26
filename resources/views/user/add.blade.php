@@ -16,7 +16,7 @@
                     </h3>
                 </div>
                 <div class="box-body">
-                    <form id="newuserform" method="POST" action="{{ route('app.user.add.submit') }}">
+                    <form id="newuserform" method="POST" action="{{ route('user.add.submit') }}">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label>Voornaam:</label>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="form-group text-right">
                             <a href="javascript:document.getElementById('newuserform').submit()" class="btn btn-sm btn-success"><i class="fa fa-save"></i> Opslaan</a>
-                            <a href="{{ route('region.list') }}" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Annuleren</a>
+                            <a href="{{ route('user.list') }}" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Annuleren</a>
                         </div>
                     </form>
                     
