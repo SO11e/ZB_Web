@@ -63,7 +63,7 @@
                         <li class="{{ Ekko::areActiveRoutes(['user.list', 'user.add', 'user.edit', 'user.remove']) }}">
                             <a href="{{ route('user.list') }}"><i class="fa fa-user"></i> <span>Gebruikers</span></a>
                         </li>
-                        <li class="{{ Ekko::areActiveRoutes(['issue.list', 'issue.view']) }}">
+                        <li class="{{ Ekko::areActiveRoutes(['issue.list', 'issue.view', 'issue.edit', 'issue.delete']) }}">
                             <a href="{{ route('issue.list') }}"><i class="fa fa-list"></i> <span>Meldingen</span></a>
                         </li>
                         <li class="{{ Ekko::areActiveRoutes(['region.list', 'region.add', 'region.edit']) }}">
