@@ -35,7 +35,7 @@
                             <td>
                                 <div class="btn-group btn-group-xs" width="100%">
                                     <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Bewerken</a>
-                                    <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-trash"></i> Verwijderen</a>
+                                    <a href="#" class="btn btn-warning btn-xs disabled"><i class="fa fa-trash"></i> Verwijderen</a>
                                 </div>
                             </td>
                         </tr>
