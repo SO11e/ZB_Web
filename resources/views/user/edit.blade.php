@@ -33,17 +33,18 @@
                 <div class="box-body">
                     <form id="newuserform" method="POST" action="{{ route('user.edit.submit') }}">
                         {{ csrf_field() }}
+                        <input type="hidden" name="id" value="{{ $user->id }}"/>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
                                     <label>Voornaam:</label>
-                                    <input class="form-control" type="text" name="firstname" placeholder="Voornaam" value="{{ old('firstname') }}">
+                                    <input class="form-control" type="text" name="firstname" placeholder="Voornaam" value="{{ old('firstname') != '' ? old('firstname') : $user->firstname }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
                                     <label>Achternaam:</label>
-                                    <input class="form-control" type="text" name="lastname" placeholder="Achternaam" value="{{ old('lastname') }}">
+                                    <input class="form-control" type="text" name="lastname" placeholder="Achternaam" value="{{ old('lastname') != '' ? old('lastname') : $user->lastname }}">
                                 </div>
                             </div>
                         </div>
@@ -51,7 +52,7 @@
                             <div class="col-md-12">
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                     <label>Emailadres:</label>
-                                    <input class="form-control" type="text" name="email" placeholder="Emailadres" value="{{ old('email') }}">
+                                    <input class="form-control" type="text" name="email" placeholder="Emailadres" value="{{ old('email') != '' ? old('email') : $user->email }}">
                                 </div>
                             </div>
                         </div>
@@ -59,13 +60,13 @@
                             <div class="col-md-8">
                                 <div class="form-group{{ $errors->has('street') ? ' has-error' : '' }}">
                                     <label>Straat:</label>
-                                    <input class="form-control" type="text" name="street" placeholder="Straat" value="{{ old('street') }}">
+                                    <input class="form-control" type="text" name="street" placeholder="Straat" value="{{ old('street') != '' ? old('street') : $user->street }}">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group{{ $errors->has('housenumber') ? ' has-error' : '' }}">
                                     <label>Huisnr.:</label>
-                                    <input class="form-control" type="text" name="housenumber" placeholder="Huisnr." value="{{ old('housenumber') }}">
+                                    <input class="form-control" type="text" name="housenumber" placeholder="Huisnr." value="{{ old('housenumber') != '' ? old('housenumber') : $user->housenumber }}">
                                 </div>
                             </div>
                         </div>
@@ -73,13 +74,13 @@
                             <div class="col-md-6">
                                 <div class="form-group{{ $errors->has('zipcode') ? ' has-error' : '' }}">
                                     <label>Postcode:</label>
-                                    <input class="form-control" type="text" name="zipcode" placeholder="Postcode" value="{{ old('zipcode') }}">
+                                    <input class="form-control" type="text" name="zipcode" placeholder="Postcode" value="{{ old('zipcode') != '' ? old('zipcode') : $user->zipcode }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
                                     <label>Plaats:</label>
-                                    <input class="form-control" type="text" name="city" placeholder="Plaats" value="{{ old('city') }}">
+                                    <input class="form-control" type="text" name="city" placeholder="Plaats" value="{{ old('city') != '' ? old('city') : $user->city }}">
                                 </div>
                             </div>
                         </div>
@@ -88,9 +89,8 @@
                                 <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
                                     <label>Rol:</label>
                                     <select class="form-control" name="role">
-                                        <option {{ old('role') == '' ? 'selected ' : '' }}disabled>Kies een rol</option>
-                                        <option {{ old('role') == 'user' ? 'selected ' : '' }}value="user">Gebruiker</option>
-                                        <option {{ old('role') == 'admin' ? 'selected ' : '' }}value="admin">Beheerder</option>
+                                        <option {{ $user->role == 'user' ? 'selected ' : '' }}value="user">Gebruiker</option>
+                                        <option {{ $user->role == 'admin' ? 'selected ' : '' }}value="admin">Beheerder</option>
                                     </select>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                                     <label>Regio:</label>
                                     <select class="form-control" name="region">
                                         @foreach($regions as $region)
-                                            <option {{ old('region') == $region->id ? 'selected ' : '' }}value="{{ $region->id }}">{{ $region->name }}</option>
+                                            <option {{ $user->region->id == $region->id ? 'selected ' : '' }}value="{{ $region->id }}">{{ $region->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

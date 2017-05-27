@@ -60,7 +60,7 @@ class UserController extends BaseController {
             'email' => $request->email,
             'password' => $request->email, //TODO: Change to random password
             'street' => $request->street,
-            'housenumber' => $request->housrnumber,
+            'housenumber' => $request->housenumber,
             'zipcode' => $request->zipcode,
             'city' => $request->city,
             'roles' => $request->role,
@@ -73,10 +73,14 @@ class UserController extends BaseController {
     }
     
     public function showEditUser($id) {
-        $apiresponse_user = ApiController::doRequest('GET', '/user/' . $id, ["bearer" => AuthController::getToken()], []);
-        $userdata = \GuzzleHttp\json_decode($apiresponse_user->getBody());
+        $apiresponse = ApiController::doRequest('GET', '/users?perPage=200', ["bearer" => AuthController::getToken()], []);
+        $userdata = \GuzzleHttp\json_decode($apiresponse->getBody());
         
-        
+        $user = null;
+        foreach($userdata->data as $userloop){
+            if($userloop->_id == $id)
+                $user = new User($userloop);
+        }
         
         $apiresponse = ApiController::doRequest('GET', '/regions?perPage=200', ["bearer" => AuthController::getToken()], []);
         $regiondata = \GuzzleHttp\json_decode($apiresponse->getBody());
@@ -87,7 +91,10 @@ class UserController extends BaseController {
             $regions[count($regions)] = new Region($region);
         }
         
-        return view('user.edit', ['regions' => $regions]);
+        return view('user.edit', [
+            'user' => $user, 
+            'regions' => $regions
+        ]);
     }
     public function editUser(Request $request) {
         $this->validate($request, [
@@ -115,14 +122,14 @@ class UserController extends BaseController {
             'email' => $request->email,
             'password' => $request->email, //TODO: Change to random password
             'street' => $request->street,
-            'housenumber' => $request->housrnumber,
+            'housenumber' => $request->housenumber,
             'zipcode' => $request->zipcode,
             'city' => $request->city,
             'roles' => $request->role,
             'region' => $request->region
         ];
         
-        ApiController::doRequest('POST', '/users', ["bearer" => AuthController::getToken()], $data);
+        ApiController::doRequest('PUT', '/users/' . $request->id, ["bearer" => AuthController::getToken()], $data);
         
         return redirect()->route('user.list');
     }
