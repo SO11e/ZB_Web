@@ -7,6 +7,21 @@
 @endsection
 
 @section('content')
+    @if (count($errors) > 0)
+        <div class="row">
+            <div class="col-md-3 col-md-offset-4">
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-exclamation-triangle"></i> Foutmelding</h4>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-3 col-md-offset-4">
             <div class="box box-warning">
@@ -16,43 +31,54 @@
                     </h3>
                 </div>
                 <div class="box-body">
-                    <div class="form-group">
-                        <label>Naam:</label>
-                        <input class="form-control" type="text" placeholder="Naam regio" value="{{ $region['name'] }}">
-                    </div>
-                    <div class="form-group">
-                        <label>Beheerder:</label>
-                        <select class="form-control" name="manager">
-                            <option value="0"{{ $region['manager'] == 'Pieter Derkse' ? ' selected' : '' }}>Pieter Derkse</option>
-                            <option value="0"{{ $region['manager'] == 'Petra Dijkstra' ? ' selected' : '' }}>Petra Dijkstra</option>
-                            <option value="0"{{ $region['manager'] == 'Johan de Jong' ? ' selected' : '' }}>Johan de Jong</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input type="checkbox" name="active"{{ $region['active'] ? ' checked' : '' }}/>
-                        <label>Actief</label>
-                    </div>
-                    <div class="form-group">
-                        <label>Postcodes (kommagescheiden):</label>
-                        <?php
-                        $first = true;
-    
-                        $string = '';
-                        foreach($region['zipcodes'] as $zipcode){
-                            if($first){
-                                $string += $zipcode;
-                                $first = false;
-                            }else{
-                                $string = $string . ',' . $zipcode;
-                            }
-                        }
-                        ?>
-                        <textarea class="form-control" name="zipcodes" placeholder="1234AA,1234AB,1234AC">{{ $string }}</textarea>
-                    </div>
-                    <div class="form-group text-right">
-                        <a href="{{ route('region.list') }}" class="btn btn-sm btn-success"><i class="fa fa-save"></i> Opslaan</a>
-                        <a href="{{ route('region.list') }}" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Annuleren</a>
-                    </div>
+                    <form id="newregionform" method="POST" action="{{ route('region.edit.submit') }}">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="id" value="{{ $region->id }}"/>
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label>Naam:</label>
+                            <input class="form-control" type="text" name="name" placeholder="Naam regio" value="{{ old('name') != '' ? old('name') : $region->name }}">
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="isActive" {{ $region->isActive ? 'checked' : '' }}/>
+                            <label>Regio actief</label>
+                        </div>
+                        <div class="form-group{{ $errors->has('manager') ? ' has-error' : '' }}">
+                            <label>Beheerder:</label>
+                            <select class="form-control" name="manager">
+                                @foreach($users as $user)
+                                    @if($user->fullname != ' ')
+                                        <option{{ $region->manager->id == $user->id ? ' selected' : '' }} value="{{ $user->id }}">{{ $user->fullname }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group{{ $errors->has('postalCodes') ? ' has-error' : '' }}">
+                            <label>Postcodes (kommagescheiden):</label>
+                            <?php
+                                $html = '';
+                                if(old('postalCodes') == '') {
+                                    $first = true;
+                                    
+                                    foreach($region->postalCodes as $zipcode) {
+                                        if($first){
+                                            $html = $html . $zipcode;
+                                            $first = false;
+                                        }else{
+                                            $html = $html . ',' . $zipcode;
+                                        }
+                                    }
+                                }else{
+                                    $html = old('postalCodes');
+                                }
+                            ?>
+                            <textarea class="form-control" name="postalCodes" placeholder="1234AA,1234AB,1234AC">{{ $html }}</textarea>
+                        </div>
+                        <div class="form-group text-right">
+                            <button class="btn btn-success" onclick="document.getElementById('newregionform').submit()"><i class="fa fa-save"></i> Opslaan</button>
+                            <a href="{{ route('region.list') }}" class="btn btn-danger"><i class="fa fa-close"></i> Annuleren</a>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
