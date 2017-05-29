@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Models\Issue;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 
 class IssueController extends BaseController {
 
@@ -38,10 +38,12 @@ class IssueController extends BaseController {
     public function editIssue(Request $request){
 
         $id = $request->id;
+
         $data = [
             'status' => $request->status,
             'description' => $request->description,
             'dateResolved' => $request->dateResolved,
+            'region' => $request->region
         ];
 
         $apiResponse = ApiController::doRequest('PUT', '/issues/'.$id, ["bearer" => AuthController::getToken()], $data);

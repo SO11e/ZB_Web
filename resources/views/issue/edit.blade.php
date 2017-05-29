@@ -3,7 +3,7 @@
 @section('title', 'Melding aanpassen')
 
 @section('middlebreadcrumbs')
-    <li><a href="{{ route('issue.list') }}">Issue</a></li>
+    <li><a href="{{ route('issue.list') }}">Meldingen</a></li>
 @endsection
 
 @section('content')
@@ -12,13 +12,14 @@
             <div class="box box-warning">
                 <div class="box-header">
                     <h3 class="box-title">
-                        Nieuwe regio
+                        Melding aanpassen
                     </h3>
                 </div>
                 <div class="box-body">
                     <form id="editIssueForm" method="POST" action="{{ route('issue.edit.submit') }}">
                         {{ csrf_field() }}
                         <input type="hidden" name="id" value="{{$issue->id}}">
+                        <input type="hidden" name="region" value="{{$issue->region->id}}">
                         <div class="form-group">
                             <label>Beschrijving:</label>
                             <textarea class="form-control" name="description">{{ $issue->description }}</textarea>
