@@ -36,15 +36,30 @@
             <p><strong>Status:</strong></p>
             <p>{{ $issue->status }}</p>
 
-            <img class="detail-img" src="{{ asset('/resources/dist/img/reports/example_map.png') }}"/>
+            <p><strong>Map:</strong></p>
+            <div id="map"></div>
+
             <p><strong>Coördinaten</strong></p>
             <p>Breedtegraad: {{$issue->latitude}} <br/>
                Lengtegraad: {{$issue->longitude}}</p>
 
             <div style="width:50%">
-                <button href="#" type="button" class="btn btn-block btn-success">Goedkeuren</button>
-                <button href="#" type="button" class="btn btn-block btn-danger">Afkeuren</button>
+                <button href="{{ route('issue.edit', $issue->id) }}" type="button" class="btn btn-block btn-warning">Bewerken&nbsp;<i class="fa fa-pencil"></i> </button>
             </div>
         </div>
     </div>
+    <script>
+        function initMap() {
+            var uluru = {lat: -25.363, lng: 131.044};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoUwgXg80a8EC-ECXU4lEMuvAjRtaI9IQ&callback=initMap"></script>
 @endsection
