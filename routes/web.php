@@ -37,6 +37,7 @@ Route::group(['middleware' => 'loginrequired'], function() {
         Route::get('/add', 'RegionController@showAddRegion')->name('region.add');
         Route::post('/add', 'RegionController@addRegion')->name('region.add.submit');
         Route::get('/edit/{id}', 'RegionController@showEditRegion')->name('region.edit');
+        Route::post('/edit/', 'RegionController@editRegion')->name('region.edit.submit');
     });
     
     Route::get('/logout', 'Auth\LogoutController@doLogout')->name('auth.logout');
