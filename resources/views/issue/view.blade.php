@@ -25,7 +25,7 @@
             <p>{{ $issue->place }}</p>
 
             <p><strong>Regio:</strong></p>
-            <p>{{ $issue->region }}</p>
+            <p>{{ $issue->region->name }}</p>
 
             <p><strong>Aangemaakt op:</strong></p>
             <p>{{ $issue->dateCreated }}</p>
