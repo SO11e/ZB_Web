@@ -50,9 +50,12 @@
     </div>
     <script>
         function initMap() {
-            var uluru = {lat: -25.363, lng: 131.044};
+            var lat = <?php echo (double)$issue->latitude; ?>;
+            var long = <?php echo (double)$issue->longitude; ?>;
+
+            var uluru = {lat: lat, lng: long};
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
+                zoom: 16,
                 center: uluru
             });
             var marker = new google.maps.Marker({
