@@ -11,47 +11,79 @@
 
 @section('content')
     <div class="row">
+        <div class="col-md-4 col-md-offset-2">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Melding
+                    </h3>
+                    <div class="box-tools">
+                        <a href="{{ route('issue.edit', $issue->id) }}" type="button" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Bewerken</a>
+                    </div>
+                </div>
+                <div class="box-body no-padding">
+                    <table class="table table-striped">
+                        <tr>
+                            <td class="text-bold">Beschrijving:</td>
+                            <td>{{ $issue->description != null ? $issue->description : 'Onbekend' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold">Adres:</td>
+                            <td>{{ $issue->streetName != null && $issue->houseNumber != null ? $issue->streetName . ' ' . $issue->houseNumber : 'Onbekend' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold">Postcode:</td>
+                            <td>{{ $issue->postalCode != null ? $issue->postalCode : 'Onbekend' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold">Stad:</td>
+                            <td>{{ $issue->place != null ? $issue->place : 'Onbekend' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold">Breedtegraad:</td>
+                            <td>{{ $issue->latitude != null ? $issue->latitude : 'Onbekend' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold">Lengtegraad:</td>
+                            <td>{{ $issue->longitude != null ? $issue->longitude : 'Onbekend' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold">Regio:</td>
+                            <td>{{ $issue->region != null && $issue->region->name != null ? $issue->region->name : 'Onbekend' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold">Aangemaakt op:</td>
+                            <td>{{ $issue->dateCreated != null ? date("d-m-Y H:i:s", strtotime($issue->dateCreated)) : 'Onbekend' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold">Opgelost op:</td>
+                            <td>{{ $issue->dateResolved != null ? date("d-m-Y H:i:s", strtotime($issue->dateResolved)) : 'Onbekend' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold">Status:</td>
+                            <td>{{ $issue->status != null ? $issue->status : 'Onbekend' }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
         <div class="col-md-4">
-            <p><strong>Beschrijving:</strong></p>
-            <p>{{ $issue->description }}</p>
-
-            <p><strong>Adres:</strong></p>
-            <p>{{ $issue->streetName }}</p>
-
-            <p><strong>Postcode:</strong></p>
-            <p>{{ $issue->postalCode }}</p>
-
-            <p><strong>Stad:</strong></p>
-            <p>{{ $issue->place }}</p>
-
-            <p><strong>Regio:</strong></p>
-            <p>{{ $issue->region->name }}</p>
-
-            <p><strong>Aangemaakt op:</strong></p>
-            <p>{{ $issue->dateCreated }}</p>
-
-            <p><strong>Opgelost op:</strong></p>
-            <p>{{ $issue->dateCreated }}</p>
-
-            <p><strong>Status:</strong></p>
-            <p>{{ $issue->status }}</p>
-
-            <p><strong>Map:</strong></p>
-            <div id="map"></div>
-
-            <p><strong>Coördinaten</strong></p>
-            <p>Breedtegraad: {{$issue->latitude}} <br/>
-               Lengtegraad: {{$issue->longitude}}</p>
-
-            <div style="width:50%">
-                <button href="{{ route('issue.edit', $issue->id) }}" type="button" class="btn btn-block btn-warning">Bewerken&nbsp;<i class="fa fa-pencil"></i> </button>
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Kaart
+                    </h3>
+                </div>
+                <div class="box-body no-padding">
+                    <div id="map" class="img-responsive"></div>
+                </div>
             </div>
         </div>
     </div>
     <script>
         function initMap() {
-            var lat = <?php echo (double)$issue->latitude; ?>;
-            var long = <?php echo (double)$issue->longitude; ?>;
+            var lat = <?php echo $issue->latitude; ?>;
+            var long = <?php echo $issue->longitude; ?>;
 
             var uluru = {lat: lat, lng: long};
             var map = new google.maps.Map(document.getElementById('map'), {
