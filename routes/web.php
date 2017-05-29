@@ -46,7 +46,7 @@ Route::group(['middleware' => 'loginrequired'], function() {
 
     Route::group(['prefix' => 'report'], function() {
         Route::get('/', 'IssueReportController@showOverview')->name('report.list');
-        Route::get('/{id}', 'IssueReportController@showDetail')->name('report.detail');
+        Route::get('/{id}', 'IssueReportController@showDetail')->name('report.view');
         Route::get('/generateReport', 'IssueReportController@showAdd')->name('report.add');
         Route::post('/add', 'IssueReportController@addReport')->name('report.add.submit');
         Route::get('/edit/{id}', 'IssueReportController@showEdit')->name('report.edit');
