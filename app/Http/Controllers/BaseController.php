@@ -8,7 +8,7 @@ class BaseController extends Controller {
     function __construct() {
         $this->middleware(function ($request, $next) {
             $user = session("auth_user");
-            View::share('user', $user);
+            View::share('userdata', $user);
         
             return $next($request);
         });

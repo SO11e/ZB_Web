@@ -19,29 +19,29 @@
                 <table class="table">
                     <tr>
                         <td>Voornaam:</td>
-                        <td>{{ $user->firstname != '' ? $user->firstname : 'Onbekend' }}</td>
+                        <td>{{ $userdata->firstname != '' ? $userdata->firstname : 'Onbekend' }}</td>
                     </tr>
                     <tr>
                         <td>Achternaam:</td>
-                        <td>{{ $user->lastname != '' ? $user->lastname : 'Onbekend' }}</td>
+                        <td>{{ $userdata->lastname != '' ? $userdata->lastname : 'Onbekend' }}</td>
                     </tr>
                     <tr>
                         <td>Adres:</td>
-                        <td>{{ $user->street != '' && $user->housenumber != '' ? $user->street . ' ' . $user->housenumber : 'Onbekend' }}</td>
+                        <td>{{ $userdata->street != '' && $userdata->housenumber != '' ? $userdata->street . ' ' . $userdata->housenumber : 'Onbekend' }}</td>
                     </tr>
                     <tr>
                         <td>Postcode:</td>
-                        <td>{{ $user->zipcode != '' ? $user->zipcode : 'Onbekend' }}</td>
+                        <td>{{ $userdata->zipcode != '' ? $userdata->zipcode : 'Onbekend' }}</td>
                     </tr>
                     <tr>
                         <td>Woonplaats:</td>
-                        <td>{{ $user->city != '' ? $user->city : 'Onbekend' }}</td>
+                        <td>{{ $userdata->city != '' ? $userdata->city : 'Onbekend' }}</td>
                     </tr>
                     <tr>
                         <td>Rol:</td>
                         <td>
                             <?php 
-                                switch($user->role) {
+                                switch($userdata->role) {
                                     case 'user':
                                         echo 'Gebruiker';
                                         break;
@@ -57,7 +57,7 @@
                     </tr>
                     <tr>
                         <td>Emailadres:</td>
-                        <td>{{ $user->email }}</td>
+                        <td>{{ $userdata->email }}</td>
                     </tr>
                 </table>
             </div>
