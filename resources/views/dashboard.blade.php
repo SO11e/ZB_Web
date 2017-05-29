@@ -74,15 +74,15 @@
                         <table class="table">
                             <tr>
                                 <td>Nieuwe meldingen:</td>
-                                <td>[Not implemented]</td>
+                                <td>{{ $issuecount }}</td>
                             </tr>
                             <tr>
-                                <td>Nieuwe geaccepteerde rapportages:</td>
-                                <td>[Not implemented]</td>
+                                <td>Nieuwe rapportages:</td>
+                                <td>{{ $createdreports }}</td>
                             </tr>
                             <tr>
-                                <td>Nieuwe geweigerde rapportages:</td>
-                                <td>[Not implemented]</td>
+                                <td>Verstuurde rapportages:</td>
+                                <td>{{ $sentreports }}</td>
                             </tr>
                         </table>
                     </div>
@@ -98,9 +98,9 @@
                     </div>
                     <div class="box-body">
                         <div class="btn-group btn-group-sm">
-                            <button class="btn btn-warning"><i class="fa fa-plus"></i> Maak rapportage</button>
-                            <button class="btn btn-warning"><i class="fa fa-plus"></i> Voeg gebruiker toe</button>
-                            <button class="btn btn-warning"><i class="fa fa-plus"></i> Voeg regio toe</button>
+                            <a class="btn btn-warning" href="{{ route('user.add') }}"><i class="fa fa-plus"></i> Voeg gebruiker toe</a>
+                            <a class="btn btn-warning" href="{{ route('region.add') }}"><i class="fa fa-plus"></i> Voeg regio toe</a>
+                            <a class="btn btn-warning disabled" href="#"><i class="fa fa-plus"></i> Maak rapportage</a>
                         </div>
                     </div>
                 </div>

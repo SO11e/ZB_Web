@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ asset('/resources/dist/css/theme.css') }}">
         <link rel="stylesheet" href="{{ asset('/resources/dist/css/skins/orange.css') }}">
+        <link rel="stylesheet" href="{{ asset('/resources/dist/css/custom.css') }}">
 
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -57,16 +58,16 @@
                 <section class="sidebar">
                     <ul class="sidebar-menu">
                         <li class="header">ALGEMEEN</li>
-                        <li>
+                        <li class="{{ Ekko::isActiveRoute('app.dashboard') }}">
                             <a href="{{ route('app.dashboard') }}"><i class="fa fa-home"></i> <span>Home</span></a>
                         </li>
-                        <li>
+                        <li class="{{ Ekko::areActiveRoutes(['user.list', 'user.add', 'user.edit', 'user.remove']) }}">
                             <a href="{{ route('user.list') }}"><i class="fa fa-user"></i> <span>Gebruikers</span></a>
                         </li>
-                        <li>
+                        <li class="{{ Ekko::areActiveRoutes(['issue.list', 'issue.view', 'issue.edit', 'issue.delete']) }}">
                             <a href="{{ route('issue.list') }}"><i class="fa fa-list"></i> <span>Meldingen</span></a>
                         </li>
-                        <li>
+                        <li class="{{ Ekko::areActiveRoutes(['region.list', 'region.add', 'region.edit']) }}">
                             <a href="{{ route('region.list') }}"><i class="fa fa-list"></i> <span>Regio's</span></a>
                         </li>
                         

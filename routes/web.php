@@ -27,10 +27,13 @@ Route::group(['middleware' => 'loginrequired'], function() {
         Route::get('/remove/{id}', 'UserController@showRemoveUser')->name('user.remove');
         Route::post('/remove', 'UserController@removeUser')->name('user.remove.submit');
     });
-    
-    Route::get('/issues', 'IssueController@showOverview')->name('issue.list');
+
     Route::group(['prefix' => 'issue'], function() {
+        Route::get('/', 'IssueController@showOverview')->name('issue.list');
         Route::get('/{id}', 'IssueController@showDetail')->name('issue.view');
+        Route::get('/edit/{id}', 'IssueController@showEditIssue')->name('issue.edit');
+        Route::post('/edit', 'IssueController@editIssue')->name('issue.edit.submit');
+        Route::get('/delete/{id}', 'IssueController@deleteIssue')->name('issue.delete');
     });
     
     Route::group(['prefix' => 'region'], function() {
@@ -38,6 +41,7 @@ Route::group(['middleware' => 'loginrequired'], function() {
         Route::get('/add', 'RegionController@showAddRegion')->name('region.add');
         Route::post('/add', 'RegionController@addRegion')->name('region.add.submit');
         Route::get('/edit/{id}', 'RegionController@showEditRegion')->name('region.edit');
+        Route::post('/edit/', 'RegionController@editRegion')->name('region.edit.submit');
     });
     
     Route::get('/logout', 'Auth\LogoutController@doLogout')->name('auth.logout');

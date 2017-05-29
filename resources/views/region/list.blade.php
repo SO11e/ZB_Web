@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-6 col-md-offset-3">
             <div class="box box-warning">
                 <div class="box-header">
                     <h3 class="box-title">
@@ -22,18 +22,16 @@
                     <table class="table table-striped">
                         <thead>
                         <tr class="text-bold">
-                            <td width="50px">#</td>
-                            <td width="150px">Naam</td>
+                            <td width="125px">Naam</td>
                             <td width="150px">Beheerder</td>
                             <td width="100px">Status</td>
                             <td>Postcodes</td>
-                            <td width="75px">Acties</td>
+                            <td width="100px">Acties</td>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($regions as $region)
                             <tr>
-                                <td>{{ $region->id }}</td>
                                 <td>{{ $region->name }}</td>
                                 <td>{{ $region->manager->fullname }}</td>
                                 <td>{{ $region->isActive ? 'Actief' : 'Non-actief' }}</td>
