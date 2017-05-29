@@ -26,7 +26,7 @@ class User {
         $this->housenumber = isset($data->housenumber) ? $data->housenumber : null;
         $this->zipcode = isset($data->zipcode) ? $data->zipcode : null;
         $this->city = isset($data->city) ? $data->city : null;
-        $this->region = isset($data->region) ? $data->region : null;
+        $this->region = isset($data->region) ? new Region($data->region) : null;
         $this->role = isset($data->roles) ? $data->roles : null;
     }
 }
