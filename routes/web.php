@@ -45,14 +45,13 @@ Route::group(['middleware' => 'loginrequired'], function() {
     });
 
     Route::group(['prefix' => 'report'], function() {
-        Route::get('/', 'IssueReportController@showOverview')->name('report.list');
-        Route::get('/{id}', 'IssueReportController@showDetail')->name('report.view');
-        Route::get('/generateReport', 'IssueReportController@showAdd')->name('report.add');
-        Route::post('/add', 'IssueReportController@addReport')->name('report.add.submit');
-        Route::get('/edit/{id}', 'IssueReportController@showEdit')->name('report.edit');
-        Route::post('/edit', 'IssueReportController@editReport')->name('report.edit.submit');
-        Route::get('/delete/{id}', 'IssueReportController@deleteReport')->name('report.delete');
-
+        Route::get('/', 'ReportController@showOverview')->name('report.list');
+        Route::get('/{id}', 'ReportController@showDetail')->name('report.view');
+        Route::get('/generateReport', 'ReportController@showAdd')->name('report.add');
+        Route::post('/add', 'ReportController@addReport')->name('report.add.submit');
+        Route::get('/edit/{id}', 'ReportController@showEdit')->name('report.edit');
+        Route::post('/edit', 'ReportController@editReport')->name('report.edit.submit');
+        Route::get('/delete/{id}', 'ReportController@deleteReport')->name('report.delete');
     });
 
 

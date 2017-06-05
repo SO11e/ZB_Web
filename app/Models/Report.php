@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class IssueReport{
+class Report{
 
     public $id;
     public $description;
