@@ -72,8 +72,8 @@
                         </li>
                         
                         <li class="header">ACCOUNT</li>
-                        <li>
-                            <a href="#"><i class="fa fa-user"></i> <span>Mijn account</span></a>
+                        <li class="{{ Ekko::isActiveRoute('auth.changepassword') }}">
+                            <a href="{{ route('auth.changepassword') }}"><i class="fa fa-key"></i> <span>Wachtwoord wijzigen</span></a>
                         </li>
                         <li>
                             <a href="{{ route('auth.logout') }}"><i class="fa fa-sign-out"></i> <span>Uitloggen</span></a>
