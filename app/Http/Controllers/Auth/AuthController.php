@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\ApiController;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BaseController;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class AuthController extends Controller {
+class AuthController extends BaseController {
     
     /**
      * Provide email and password to authenticate user on valid credentials
@@ -72,5 +74,31 @@ class AuthController extends Controller {
      */
     public static function getUser() {
         return session("auth_user", null);
+    }
+    
+    public function showChangePassword() {
+        return view('auth.changepassword');
+    }
+    public function changePassword(Request $request) {
+        $this->validate($request, [
+            'currentpass' => 'required',
+            'newpass' => 'required|different:currentpass',
+            'repeatpass' => 'required|same:newpass',
+        ]);
+        
+        $user = AuthController::getUser();
+    
+        $loginresponse = ApiController::doRequest('POST', '/login', [], ["email" => $user->email, "password" => $request->currentpass]);
+        if($loginresponse->getStatusCode() != 200) {
+            return redirect()->back()->withErrors(["currentpass" => "Uw huidige wachtwoord is incorrect"]);
+        }
+        
+        $user->password = $request->newpass;
+        $user->region = $user->region->id;
+    
+        ApiController::doRequest('PUT', '/users/' . $user->id, ["bearer" => AuthController::getToken()], $user);
+        
+        AuthController::doLogout();
+        return redirect()->route('auth.login')->withMessage("Uw wachtwoord is gewijzigd. U kunt nu opnieuw inloggen.");
     }
 }

@@ -44,7 +44,8 @@ Route::group(['middleware' => 'loginrequired'], function() {
         Route::post('/edit/', 'RegionController@editRegion')->name('region.edit.submit');
     });
     
+    Route::get('/changepassword', 'Auth\AuthController@showChangePassword')->name('auth.changepassword');
+    Route::post('/changepassword', 'Auth\AuthController@changePassword')->name('auth.changepassword.submit');
+    
     Route::get('/logout', 'Auth\LogoutController@doLogout')->name('auth.logout');
 });
-
-Route::get('/example', 'ExampleController@showExample')->name('app.example');
