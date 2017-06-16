@@ -16,17 +16,7 @@ class ReportController extends BaseController {
         $reports = [];
 
         foreach ($data->data as $value) {
-            $report = new Report($value);
-            $report->issues_old = $report->issues;
-            $report->issues = [];
-            
-            foreach($report->issues_old as $issue) {
-                $apiResponse = ApiController::doRequest("GET", "/issues/" . $issue["id"], ["bearer" => AuthController::getToken()], []);
-                $data = \GuzzleHttp\json_decode($apiResponse->getBody());
-    
-                $report->issues[count($report->issues)] = new Issue($data);
-            }
-            $reports[count($reports)] = $report;
+            $reports[count($reports)] = new Report($value);
         }
 
         return view('report.list', ['reports' => $reports]);
@@ -57,7 +47,6 @@ class ReportController extends BaseController {
     }
 
     public function deleteReport($id) {
-
         $apiResonse = ApiController::doRequest('DELETE', '/reports/'.$id, ["bearer" => AuthController::getToken()], []);
 
         return redirect()->route('report.list');

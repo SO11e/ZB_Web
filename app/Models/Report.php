@@ -18,8 +18,12 @@ class Report{
         $this->status = isset($data->status) ? $data->status : null;
         $this->dateCreated = isset($data->dateCreated) ? $data->dateCreated : null;
         $this->dateUpdated = isset($data->dateUpdated) ? $data->dateUpdated : null;
-        $this->createBy = isset($data->createBy) ? new User($data->createBy) : null;
-        $this->issues = isset($data->issues) ? new Issue($data->issues) : null;
+        $this->createBy = isset($data->createBy) ? new User($data->createdBy) : null;
+        if(isset($data->issues)) {
+            foreach ($data->issues as $issue) {
+                $this->issues[count($this->issues)] = new Issue($issue);
+            }
+        }
     }
 
 
