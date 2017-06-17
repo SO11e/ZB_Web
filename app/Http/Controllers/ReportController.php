@@ -36,12 +36,24 @@ class ReportController extends BaseController {
 
     public function showEdit($id) {
 
+        $apiResponse = ApiController::doRequest("GET", "/reports/".$id, ["bearer" => AuthController::getToken()], []);
+        $data = \GuzzleHttp\json_decode($apiResponse->getBody());
+
+        $report = new Report($data);
+
+        $date = new Date("yyyy-mm-dd");
+
+        return view('report.edit', ['report' => $report]);
+
     }
 
     public function editReport(Request $request) {
         $id = $request->id;
 
-        $data = [];
+        $data = [
+            'status' => $request->status,
+            'description' => $request->description
+        ];
 
 
     }

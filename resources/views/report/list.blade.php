@@ -40,7 +40,7 @@
                             <td>
                                 <div class="btn-group btn-group-xs" width="100%">
                                     <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-arrow-circle-o-right"></i> Bekijken</a>
-                                    <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Bewerken</a>
+                                    <a href="{{ route('report.edit', $report->id) }}" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Bewerken</a>
                                     <a href="{{ route('report.delete', $report->id) }}" class="btn btn-warning btn-xs" onclick="return confirm('Weet u zeker dat u deze melding wilt verwijderen? Dit kan niet ongedaan gemaakt worden.')"><i class="fa fa-trash"></i> Verwijderen</a>
                                 </div>
                             </td>
