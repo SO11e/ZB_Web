@@ -41,8 +41,6 @@ class ReportController extends BaseController {
 
         $report = new Report($data);
 
-        $date = new Date("yyyy-mm-dd");
-
         return view('report.edit', ['report' => $report]);
 
     }
@@ -50,16 +48,22 @@ class ReportController extends BaseController {
     public function editReport(Request $request) {
         $id = $request->id;
 
+        $today = date("Y-m-d H:i:s");
+
         $data = [
             'status' => $request->status,
-            'description' => $request->description
+            'description' => $request->description,
+            'dateUpdated' => $today
         ];
 
+        $apiResponse = ApiController::doRequest('PUT', '/reports/'.$id, ["bearer" => AuthController::getToken()], $data);
+
+        return redirect()->route('report.list');
 
     }
 
     public function deleteReport($id) {
-        $apiResonse = ApiController::doRequest('DELETE', '/reports/'.$id, ["bearer" => AuthController::getToken()], []);
+        $apiResponse = ApiController::doRequest('DELETE', '/reports/'.$id, ["bearer" => AuthController::getToken()], []);
 
         return redirect()->route('report.list');
     }

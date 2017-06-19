@@ -15,7 +15,8 @@
                     </h3>
                 </div>
                 <div class="box-body">
-                    <form id="editReportForm" method="POST" action="{{ route('report.edit.submit') }}'">
+                    <form id="editReportForm" method="POST" action="{{ route('report.edit.submit') }}">
+                        {{ csrf_field() }}
                         <input type="hidden" name="id" value="{{$report->id}}">
                         <div class="form-group">
                             <label>Beschrijving:</label>

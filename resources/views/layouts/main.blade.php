@@ -112,6 +112,7 @@
         <script src="{{ asset('/resources/bootstrap/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('/resources/dist/js/app.js') }}"></script>
         <script src="{{ asset('/resources/dist/js/clock.js') }}"></script>
+        <script src="{{ asset('/resources/dist/js/custom.js') }}"></script>
         @yield('javascript')
     </body>
 </html>

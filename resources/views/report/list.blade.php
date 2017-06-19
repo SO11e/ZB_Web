@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="box-body no-padding table-horizontalscroll">
-                <table class="table table-striped">
+                <table id="reports-table" class="table table-striped">
                     <thead>
                     <tr class="text-bold">
                         <td width="125px">Beschrijving</td>
