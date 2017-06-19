@@ -16,16 +16,17 @@
                 </div>
             </div>
             <div class="box-body no-padding table-horizontalscroll">
+                <input type="text" class="searchInput" id="myInput" onkeyup="filterTable('myInput', 'reports-table')" placeholder="Zoek op beschrijving">
                 <table id="reports-table" class="table table-striped">
                     <thead>
                     <tr class="text-bold">
-                        <td width="125px">Beschrijving</td>
-                        <td width="100px">Status</td>
-                        <td width="200px">Datum aangemaakt</td>
-                        <td width="75px">Datum aangepast</td>
-                        <td width="100px">Gemaakt door</td>
-                        <td width="175px">Aantal meldingen</td>
-                        <td width="150px">Acties</td>
+                        <th width="125px">Beschrijving</th>
+                        <th width="100px">Status</th>
+                        <th width="200px">Datum aangemaakt</th>
+                        <th width="75px">Datum aangepast</th>
+                        <th width="100px">Gemaakt door</th>
+                        <th width="175px">Aantal meldingen</th>
+                        <th width="150px">Acties</th>
                     </tr>
                     </thead>
                     <tbody>
