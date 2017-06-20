@@ -7,7 +7,7 @@
         <form class="form-auth absolute-center" method="POST" action="{{ route('auth.login.submit') }}">
             @if (Session::has('message'))
                 <div class="alert alert-info">
-                    <h3><i class="fa fa-exclamation-triangle"></i> Foutmelding!</h3>
+                    <h3><i class="fa fa-exclamation-triangle"></i> Melding</h3>
                     {{ Session::get('message') }}
                 </div>
             @endif
