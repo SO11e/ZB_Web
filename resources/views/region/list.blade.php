@@ -19,7 +19,11 @@
                     </div>
                 </div>
                 <div class="box-body no-padding">
-                    <table class="table table-striped">
+                    <input type="text" class="searchInput" id="myInput" onkeyup="filterTable('myInput', 'table-regions', 0)" placeholder="Zoek op naam">
+                    <input type="text" class="searchInput" id="zipCode" onkeyup="filterTable('zipCode', 'table-regions', 3)" placeholder="Zoek op postcode">
+                    <br/>
+                    <span style="margin-left:8px">* Combinerend zoeken <strong>niet</strong> mogelijk</span>
+                    <table id="table-regions" class="table table-striped">
                         <thead>
                         <tr class="text-bold">
                             <td width="125px">Naam</td>

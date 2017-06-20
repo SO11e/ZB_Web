@@ -13,15 +13,16 @@
                 </div>
             </div>
             <div class="box-body no-padding table-horizontalscroll">
-                <table class="table table-striped">
+                <input type="text" class="searchInput" id="myInput" onkeyup="filterTable('myInput', 'table-users', 0)" placeholder="Zoek op volledige naam">
+                <table id="table-users" class="table table-striped">
                     <thead>
                     <tr class="text-bold">
-                        <td width="125px">Volledige naam</td>
-                        <td width="100px">Woonplaats</td>
-                        <td width="200px">Emailadres</td>
-                        <td width="75px">Rol</td>
-                        <td width="100px">Regio</td>
-                        <td width="175px">Acties</td>
+                        <th width="125px">Volledige naam</th>
+                        <th width="100px">Woonplaats</th>
+                        <th width="200px">Emailadres</th>
+                        <th width="75px">Rol</th>
+                        <th width="100px">Regio</th>
+                        <th width="175px">Acties</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -35,7 +36,6 @@
                             <td>
                                 <div class="btn-group btn-group-xs" width="100%">
                                     <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Bewerken</a>
-                                    <a href="#" class="btn btn-warning btn-xs disabled"><i class="fa fa-trash"></i> Verwijderen</a>
                                 </div>
                             </td>
                         </tr>
