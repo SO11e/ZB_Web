@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Models\Report;
-use App\Models\Issue;
 use Illuminate\Http\Request;
+use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 
 class ReportController extends BaseController {
 
@@ -23,7 +23,17 @@ class ReportController extends BaseController {
     }
 
     public function showDetail($id) {
-
+        $apiResponse = ApiController::doRequest("GET", "/reports/" . $id, ["bearer" => AuthController::getToken()], []);
+        $data = \GuzzleHttp\json_decode($apiResponse->getBody());
+        if($apiResponse->getStatusCode() == 404) {
+            abort(404);
+        }
+        $report = new Report($data);
+    
+        $pdf = PDF::loadView('report.view', [
+            'report' => $report
+        ])->setOptions(['orientation' => 'landscape', 'margin-left' => 5, 'margin-right' => 5, 'margin-top' => 5, 'margin-bottom' => 5]);
+        return $pdf->stream('Rapport.pdf');
     }
 
     public function showAdd() {
