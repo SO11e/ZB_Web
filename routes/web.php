@@ -43,9 +43,18 @@ Route::group(['middleware' => 'loginrequired'], function() {
         Route::get('/edit/{id}', 'RegionController@showEditRegion')->name('region.edit');
         Route::post('/edit/', 'RegionController@editRegion')->name('region.edit.submit');
     });
-    
+
+    Route::group(['prefix' => 'report'], function() {
+        Route::get('/', 'ReportController@showOverview')->name('report.list');
+        Route::get('/{id}', 'ReportController@showDetail')->name('report.view');
+        Route::get('/generateReport', 'ReportController@showAdd')->name('report.add');
+        Route::post('/add', 'ReportController@addReport')->name('report.add.submit');
+        Route::get('/edit/{id}', 'ReportController@showEdit')->name('report.edit');
+        Route::post('/edit', 'ReportController@editReport')->name('report.edit.submit');
+        Route::get('/delete/{id}', 'ReportController@deleteReport')->name('report.delete');
+    });
+
     Route::get('/changepassword', 'Auth\AuthController@showChangePassword')->name('auth.changepassword');
     Route::post('/changepassword', 'Auth\AuthController@changePassword')->name('auth.changepassword.submit');
-    
     Route::get('/logout', 'Auth\LogoutController@doLogout')->name('auth.logout');
 });

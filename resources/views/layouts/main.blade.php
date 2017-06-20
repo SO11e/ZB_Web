@@ -70,6 +70,9 @@
                         <li class="{{ Ekko::areActiveRoutes(['region.list', 'region.add', 'region.edit']) }}">
                             <a href="{{ route('region.list') }}"><i class="fa fa-list"></i> <span>Regio's</span></a>
                         </li>
+                        <li class="{{ Ekko::areActiveRoutes(['report.list', 'region.add', 'region.edit', 'region.view']) }}">
+                            <a href="{{ route('report.list') }}"><i class="fa fa-list"></i> <span>Rapportages</span></a>
+                        </li>
                         
                         <li class="header">ACCOUNT</li>
                         <li class="{{ Ekko::isActiveRoute('auth.changepassword') }}">
@@ -109,6 +112,7 @@
         <script src="{{ asset('/resources/bootstrap/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('/resources/dist/js/app.js') }}"></script>
         <script src="{{ asset('/resources/dist/js/clock.js') }}"></script>
+        <script src="{{ asset('/resources/dist/js/custom.js') }}"></script>
         @yield('javascript')
     </body>
 </html>
