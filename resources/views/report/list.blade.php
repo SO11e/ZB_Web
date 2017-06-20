@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="box-body no-padding table-horizontalscroll">
-                <input type="text" class="searchInput" id="myInput" onkeyup="filterTable('myInput', 'reports-table')" placeholder="Zoek op beschrijving">
+                <input type="text" class="searchInput" id="myInput" onkeyup="filterTable('myInput', 'reports-table', 0)" placeholder="Zoek op beschrijving">
                 <table id="reports-table" class="table table-striped">
                     <thead>
                     <tr class="text-bold">

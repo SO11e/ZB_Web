@@ -13,8 +13,8 @@
         <!-- /.box-header -->
         <div class="box-body no-padding">
             <form method="post" action="" onsubmit="showContents(); return false;">
-                
-                <table class="table table-striped">
+                <input type="text" class="searchInput" id="myInput" onkeyup="filterTable('myInput', 'issue-table', 1)" placeholder="Zoek op beschrijving">
+                <table id="issue-table" class="table table-striped">
                     <tbody>
                     <tr>
                         <th></th>
