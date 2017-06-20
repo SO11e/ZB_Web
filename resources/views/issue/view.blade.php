@@ -11,7 +11,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-4 col-md-offset-2">
+        <div class="col-md-4">
             <div class="box box-warning">
                 <div class="box-header">
                     <h3 class="box-title">
@@ -76,6 +76,22 @@
                 </div>
                 <div class="box-body no-padding">
                     <div id="map" class="img-responsive"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Afbeelding
+                    </h3>
+                </div>
+                <div class="box-body no-padding">
+                    @if(isset($issue->image))
+                        <img src="{{ $issue->image }}" class="img-responsive"/>
+                    @else
+                        Geen afbeelding
+                    @endif
                 </div>
             </div>
         </div>

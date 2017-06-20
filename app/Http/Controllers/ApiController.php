@@ -15,7 +15,7 @@ class ApiController {
     public static function doRequest($method, $route, $headers, $body) {
         $client = new GuzzleHttp\Client([
             'base_uri' => "https://zb-api.herokuapp.com", //API BaseURL
-            'timeout' => 5, //API request timeout
+            'timeout' => 30, //API request timeout
         ]);
         
         return $client->request($method, $route, ["headers" => $headers, "form_params" => $body, "http_errors" => false]);
