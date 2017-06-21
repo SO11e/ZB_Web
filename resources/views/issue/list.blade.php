@@ -37,7 +37,7 @@
                                 <td>{{ $issue->description != null ? $issue->description : 'Onbekend' }}</td>
                                 <td>{{ $issue->streetName != null && $issue->houseNumber != null ? $issue->streetName . ' ' . $issue->houseNumber : 'Onbekend' }}</td>
                                 <td>{{ $issue->postalCode != null ? $issue->postalCode : 'Onbekend' }}</td>
-                                <td>{{ $issue->place != null ? $issue->place : 'Onbekend' }}</td>
+                                <td>{{ $issue->city != null ? $issue->city : 'Onbekend' }}</td>
                                 <td>{{ $issue->region != null && $issue->region->name != null ? $issue->region->name : 'Onbekend' }}</td>
                                 <td>{{ $issue->dateCreated != null ? date("d-m-Y H:i:s", strtotime($issue->dateCreated)) : 'Onbekend' }}</td>
                                 <td>

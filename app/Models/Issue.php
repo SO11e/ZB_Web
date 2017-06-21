@@ -8,7 +8,6 @@ class Issue {
     public $city;
     public $houseNumber;
     public $postalCode;
-    public $place;
     public $region;
     public $status;
     public $description;
@@ -25,7 +24,6 @@ class Issue {
         $this->city = isset($data->city) ? $data->city : null;
         $this->houseNumber = isset($data->houseNumber) ? $data->houseNumber : null;
         $this->postalCode = isset($data->zipCode) ? $data->zipCode : null;
-        $this->place = isset($data->place) ? $data->place : null;
         $this->region = isset($data->region) ? new Region($data->region) : null;
         $this->status = isset($data->status) ? $data->status : null;
         $this->description = isset($data->description) ? $data->description : null;
