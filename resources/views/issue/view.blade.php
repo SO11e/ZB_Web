@@ -28,8 +28,8 @@
                             <td>{{ $issue->description != null ? $issue->description : 'Onbekend' }}</td>
                         </tr>
                         <tr>
-                            <td class="text-bold">Adres:</td>
-                            <td>{{ $issue->streetName != null && $issue->houseNumber != null ? $issue->streetName . ' ' . $issue->houseNumber : 'Onbekend' }}</td>
+                            <td class="text-bold">Straat:</td>
+                            <td>{{ $issue->streetName != null ? $issue->streetName : 'Onbekend' }}</td>
                         </tr>
                         <tr>
                             <td class="text-bold">Postcode:</td>
@@ -37,7 +37,7 @@
                         </tr>
                         <tr>
                             <td class="text-bold">Stad:</td>
-                            <td>{{ $issue->place != null ? $issue->place : 'Onbekend' }}</td>
+                            <td>{{ $issue->city != null ? $issue->city : 'Onbekend' }}</td>
                         </tr>
                         <tr>
                             <td class="text-bold">Breedtegraad:</td>

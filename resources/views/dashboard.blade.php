@@ -100,7 +100,7 @@
                         <div class="btn-group btn-group-sm">
                             <a class="btn btn-warning" href="{{ route('user.add') }}"><i class="fa fa-plus"></i> Voeg gebruiker toe</a>
                             <a class="btn btn-warning" href="{{ route('region.add') }}"><i class="fa fa-plus"></i> Voeg regio toe</a>
-                            <a class="btn btn-warning disabled" href="#"><i class="fa fa-plus"></i> Maak rapportage</a>
+                            <a class="btn btn-warning" href="{{ route('issue.list') }}"><i class="fa fa-plus"></i> Maak rapportage</a>
                         </div>
                     </div>
                 </div>
